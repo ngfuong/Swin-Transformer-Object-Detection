@@ -2,6 +2,15 @@
 
 This repo contains the supported code and configuration files to reproduce object detection results of [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf). It is based on [mmdetection](https://github.com/open-mmlab/mmdetection).
 
+## Fork Updates
+***19/07/2021***
+Trained Swin-B with Cascade Mask R-CNN on Cityscapes dataset.
+| Backbone | Pretrain | Lr Schd | mask mAP | #params | FLOPs| config | model |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Swin-B | ImageNet-22K | 1x | 39.7 | 143.8M | 970G | [config](configs/swin/cascade_mask_rcnn_swin_base_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_1x_cityscapes.py) | [drive](https://drive.google.com/file/d/137Vf6-kEU7vO5u0zbOrm_5T3Jry2lpVW/view?usp=sharing)|
+
+Colab demo can be found at: [demo](https://colab.research.google.com/drive/1uz0F2bI5Dk-842ZErJfQp3mGwT0XAWXG?usp=sharing)
+
 ## Updates
 
 ***05/11/2021*** Models for [MoBY](https://github.com/SwinTransformer/Transformer-SSL) are released
