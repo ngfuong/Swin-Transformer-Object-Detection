@@ -1,21 +1,22 @@
 _base_ = [
-    '../_base_/models/cascade_mask_rcnn_swin_fpn.py',
-    '../_base_/datasets/coco_instance.py',
+    '../_base_/models/cascade_mask_rcnn_swin_fpn_cityscapes.py',
+    '../_base_/datasets/cityscapes_instance.py',
     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 ]
 
+num_classes = 8 #originally 80 for coco
 model = dict(
     backbone=dict(
-        embed_dim=96,
-        depths=[2, 2, 6, 2],
-        num_heads=[3, 6, 12, 24],
+        embed_dim=128,
+        depths=[2, 2, 18, 2],
+        num_heads=[4, 8, 16, 32],
         window_size=7,
         ape=False,
-        drop_path_rate=0.0,
+        drop_path_rate=0.3,
         patch_norm=True,
         use_checkpoint=False
     ),
-    neck=dict(in_channels=[96, 192, 384, 768]),
+    neck=dict(in_channels=[128, 256, 512, 1024]),
     roi_head=dict(
         bbox_head=[
             dict(
@@ -26,7 +27,7 @@ model = dict(
                 conv_out_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=80,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -45,7 +46,7 @@ model = dict(
                 conv_out_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=80,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -64,7 +65,7 @@ model = dict(
                 conv_out_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=80,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -125,16 +126,16 @@ optimizer = dict(_delete_=True, type='AdamW', lr=0.0001, betas=(0.9, 0.999), wei
                  paramwise_cfg=dict(custom_keys={'absolute_pos_embed': dict(decay_mult=0.),
                                                  'relative_position_bias_table': dict(decay_mult=0.),
                                                  'norm': dict(decay_mult=0.)}))
-lr_config = dict(step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=12)
+lr_config = dict(step=[27, 33])
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
 # do not use mmdet version fp16
-# fp16 = None
-# optimizer_config = dict(
-#     type="DistOptimizerHook",
-#     update_interval=1,
-#     grad_clip=None,
-#     coalesce=True,
-#     bucket_size_mb=-1,
-#     use_fp16=True,
-# )
+#fp16 = None
+#optimizer_config = dict(
+#    type="DistOptimizerHook",
+#    update_interval=1,
+#    grad_clip=None,
+#    coalesce=True,
+#    bucket_size_mb=-1,
+#    use_fp16=True,
+#)
