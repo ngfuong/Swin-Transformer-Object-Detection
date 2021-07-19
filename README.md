@@ -9,7 +9,10 @@ Trained Swin-B with Cascade Mask R-CNN on Cityscapes dataset.
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Swin-B | ImageNet-22K | 1x | 39.7 | 143.8M | 970G | [config](configs/swin/cascade_mask_rcnn_swin_base_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_1x_cityscapes.py) | [drive](https://drive.google.com/file/d/137Vf6-kEU7vO5u0zbOrm_5T3Jry2lpVW/view?usp=sharing)|
 
-Colab demo can be found at: [demo](https://colab.research.google.com/drive/1uz0F2bI5Dk-842ZErJfQp3mGwT0XAWXG?usp=sharing)
+Demo Swin-B on Cityscapes: [colab](https://colab.research.google.com/drive/1uz0F2bI5Dk-842ZErJfQp3mGwT0XAWXG?usp=sharing)
+
+Demo Swin-B on COCO: [colab](https://colab.research.google.com/drive/11pjRwebgMSJ0XvRdPOCRCKYJI1TrgoD6?usp=sharing)
+
 
 ## Updates
 
