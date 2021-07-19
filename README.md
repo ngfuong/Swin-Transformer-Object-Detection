@@ -13,6 +13,8 @@ Demo Swin-B on Cityscapes: [colab](https://colab.research.google.com/drive/1uz0F
 
 Demo Swin-B on COCO: [colab](https://colab.research.google.com/drive/11pjRwebgMSJ0XvRdPOCRCKYJI1TrgoD6?usp=sharing)
 
+Inference Demo: [colab](https://colab.research.google.com/drive/1ZWVBasMwlMHe2R_QInhh_3GWx77ZOlwS?usp=sharing)
+
 
 ## Updates
 
